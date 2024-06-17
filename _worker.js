@@ -15,7 +15,6 @@ let พร็อกซีไอพี = พร็อกซีไอพีs[Math.
 // let พร็อกซีไอพี = "[2a01:4f8:c2c:123f:64:5:6810:c55a]"
 
 let dohURL = 'https://sky.rethinkdns.com/1:-Pf_____9_8A_AMAIgE8kMABVDDmKOHTAKg='; // https://cloudflare-dns.com/dns-query or https://dns.google/dns-query
-console.log(env.UUID);
 if (!isValidUUID(userID)) {
 	throw new Error('uuid is invalid');
 }
@@ -29,6 +28,9 @@ export default {
 	 */
 	async fetch(request, env, ctx) {
 		// uuid_validator(request);
+
+		
+		
 		try {
 			userID = env.UUID || userID;
 			พร็อกซีไอพี = env.PROXYIP || พร็อกซีไอพี;
@@ -37,6 +39,8 @@ export default {
 			if (userID.includes(',')) {
 				userID_Path = userID.split(',')[0];
 			}
+			console.log(userID);
+			
 			const upgradeHeader = request.headers.get('Upgrade');
 			if (!upgradeHeader || upgradeHeader !== 'websocket') {
 				const url = new URL(request.url);
